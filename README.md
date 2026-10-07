@@ -4,7 +4,10 @@ Self-hosted AI gateway ([decolua/9router](https://github.com/decolua/9router)):
 one OpenAI-compatible endpoint (`/v1`) in front of 40+ providers,
 with dashboard, combos, quota tracking and SQLite persistence on a Railway volume.
 
-[![Deploy on Railway](https://railway.com/button.svg)](https://railway.com/deploy?repoUrl=https://github.com/myagenthermes2/nine-router-railway)
+[![Deploy on Railway](https://railway.com/button.svg)](https://railway.com/new?repo=https://github.com/myagenthermes2/nine-router-railway)
+
+> اگر دکمه بالا باز نشد: در داشبورد Railway روی
+> **New Project → Deploy from Repo** بزن و همین ریپو را انتخاب کن.
 
 ## Deploy (1 click)
 
