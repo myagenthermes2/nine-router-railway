@@ -1,0 +1,55 @@
+{
+  "$schema": "https://railway.com/railway.schema.json",
+  "services": {
+    "nine-router": {
+      "source": {
+        "image": "decolua/9router:latest"
+      },
+      "volumes": [
+        {
+          "name": "nine-router-volume",
+          "mountPath": "/app/data"
+        }
+      ],
+      "variables": {
+        "DATA_DIR": "/app/data",
+        "NODE_ENV": "production",
+        "REQUIRE_API_KEY": "true",
+        "ENABLE_REQUEST_LOGS": "false",
+        "OBSERVABILITY_ENABLED": "true",
+        "AUTH_COOKIE_SECURE": "true",
+        "CLOUD_URL": "https://9router.com",
+        "NEXT_PUBLIC_CLOUD_URL": "https://9router.com",
+        "JWT_SECRET": "${{secret.JWT_SECRET}}",
+        "API_KEY_SECRET": "${{secret.API_KEY_SECRET}}",
+        "MACHINE_ID_SALT": "${{secret.MACHINE_ID_SALT}}",
+        "INITIAL_PASSWORD": "${{secret.INITIAL_PASSWORD}}"
+      },
+      "deploy": {
+        "healthcheckPath": "/api/health",
+        "restartPolicyType": "ALWAYS"
+      },
+      "networking": {
+        "serviceDomains": true
+      }
+    }
+  },
+  "variables": {
+    "JWT_SECRET": {
+      "generator": "SECRET",
+      "description": "Dashboard auth secret (auto-generated)"
+    },
+    "API_KEY_SECRET": {
+      "generator": "SECRET",
+      "description": "Endpoint proxy API key secret (auto-generated)"
+    },
+    "MACHINE_ID_SALT": {
+      "generator": "SECRET",
+      "description": "Machine ID salt (auto-generated)"
+    },
+    "INITIAL_PASSWORD": {
+      "generator": "SECRET",
+      "description": "Login password for the 9Router dashboard - save it after deploy"
+    }
+  }
+}
